@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Game</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      text-align: center;
+      color: white;
+    }
+
+    /* Overlay mờ */
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: -1;
+    }
+
+    .logo {
+      margin-top: 20px;
+      width: 120px;
+    }
+
+    .title {
+      margin-top: 10px;
+      font-size: clamp(22px, 5vw, 40px);
+      font-weight: bold;
+    }
+
+    .btn-container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .circle-btn {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: none;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      background: #ff5722;
+      color: white;
+      transition: 0.3s;
+    }
+
+    .circle-btn:hover {
+      transform: scale(1.1);
+    }
+
+    /* Popup */
+    .popup {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 10;
+    }
+
+    .popup img {
+      max-width: 90%;
+      max-height: 70%;
+    }
+
+    .popup button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .close-btn {
+      background: red;
+      color: white;
+    }
+
+    .download-btn {
+      background: green;
+      color: white;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Logo -->
+  <img src="assets/logo.png" class="logo">
+
+  <!-- Title -->
+  <div class="title">Mini game tìm vị trí</div>
+
+  <!-- Button -->
+  <div class="btn-container">
+    <button class="circle-btn" onclick="showImage()">Hiện ảnh</button>
+  </div>
+
+  <!-- Popup -->
+  <div class="popup" id="popup">
+    <img id="popupImg">
+    <div>
+      <button class="download-btn" onclick="downloadImage()">Lưu ảnh</button>
+      <button class="close-btn" onclick="closePopup()">Đóng</button>
+    </div>
+  </div>
+
+  <script>
+    // Danh sách background
+    const backgrounds = [
+      "assets/bg1.jpg",
+      "assets/bg2.jpg",
+      "assets/bg3.jpg"
+    ];
+
+    // Danh sách ảnh game
+    const images = [
+      "images/img1.jpg",
+      "images/img2.jpg",
+      "images/img3.jpg"
+    ];
+
+    let currentImage = "";
+
+    // Random background khi load
+    function setRandomBackground() {
+      const bg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+      document.body.style.backgroundImage = `url(${bg})`;
+    }
+
+    setRandomBackground();
+
+    // Hiện ảnh random
+    function showImage() {
+      const img = images[Math.floor(Math.random() * images.length)];
+      currentImage = img;
+
+      document.getElementById("popupImg").src = img;
+      document.getElementById("popup").style.display = "flex";
+    }
+
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+
+    function downloadImage() {
+      const link = document.createElement("a");
+      link.href = currentImage;
+      link.download = "image.jpg";
+      link.click();
+    }
+  </script>
+
+</body>
+</html>
