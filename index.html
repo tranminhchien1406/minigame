@@ -133,7 +133,31 @@
       font-weight: bold;
       margin-bottom: 10px;
     }
-    
+    .rule-box {
+      margin-top: 15px;
+      padding: 15px;
+      width: 85%;
+      max-width: 400px;
+
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 15px;
+
+      backdrop-filter: blur(5px);
+    }
+
+    .rule-title {
+      font-size: clamp(18px, 4vw, 24px);
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #ffeb3b;
+    }
+
+    .rule-box ul {
+      text-align: left;
+      font-size: clamp(14px, 3.5vw, 18px);
+      line-height: 1.5;
+      padding-left: 18px;
+    }
   </style>
 </head>
 
@@ -144,7 +168,16 @@
 
   <!-- Title -->
   <div class="title">Mini game tìm vị trí</div>
-
+  <!-- Rule -->
+  <div class="rule-box">
+  <div class="rule-title">📜 Luật chơi</div>
+    <ul>
+      <li>- Bấm "HIỆN ẢNH" để nhận gợi ý</li>
+      <li>- Đoán vị trí dựa trên hình ảnh</li>
+      <li>- Vị trí của hình ảnh gợi ý nằm ở các khu vực trưng bày tại tầng 2, tầng 3</li>
+      <li>- Sau khi tìm được vị trí được gợi ý hãy chụp lại và nói tên chủ đề trưng bày mà bạn đã chụp cho quản trò để nhận thưởng</li>
+    </ul>
+  </div>
   <!-- Button -->
   <div class="btn-container">
     <button class="circle-btn" onclick="showImage()">HIỆN ẢNH</button>
@@ -175,15 +208,6 @@
     for (let i = 1; i <= totalImages; i++) {
       images.push(`images/img${i}.jpg`);
     }
-    // Chẳn lẽ
-    /*const oddImages = images.filter((_, i) => i % 2 === 0); //Tách lẻ
-    const evenImages = images.filter((_, i) => i % 2 === 1); //Tách chẵn 
-
-    const orderedImages = [...oddImages, ...evenImages]; //Gộp lại theo luật
-    
-    console.log("ODD:", oddImages);
-    console.log("EVEN:", evenImages);
-    console.log("ORDER:", orderedImages);*/
 
     let shuffledImages = shuffleArray(images);
     let currentIndex = 0;
@@ -208,14 +232,6 @@
 }
     // Hiện ảnh
     function showImage() {
-      //const img = images[Math.floor(Math.random() * images.length)]; /*Random*/
-      /*const img = orderedImages[currentIndex];
-      currentIndex++;
-
-      if (currentIndex >= orderedImages.length) {
-      currentIndex = 0;
-      }*/
-
       //Shuffle
       const img = shuffledImages[currentIndex];
 
