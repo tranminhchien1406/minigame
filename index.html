@@ -168,14 +168,20 @@
       "assets/bg3.jpg"
     ];
 
-    // Danh sách ảnh game
-    const images = [
-      "images/img1.jpg",
-      "images/img2.jpg",
-      "images/img3.jpg"
-    ];
+    // Danh sách ảnh game lấy theo chẵn, lẻ
+    const images = [];
+    
+    for (let i = 1; i <= 20; i++) {
+    images.push(`images/img${i}.jpg`);
+    }
+    
+    const oddImages = images.filter((_, i) => i % 2 === 0); //Tách lẻ
+    const evenImages = images.filter((_, i) => i % 2 === 1); //Tách chẵn 
 
-    let currentImage = "";
+    const orderedImages = [...oddImages, ...evenImages]; //Gộp lại theo luật
+
+    let currentIndex = 0;
+    /*let currentImage = "";*/
 
     // Random background khi load
     function setRandomBackground() {
@@ -186,33 +192,14 @@
     setRandomBackground();
 
     // Hiện ảnh
-    let oddIndex = 0;
-    let evenIndex = 0;
-    let phase = "odd"; // "odd" hoặc "even"
     function showImage() {
       /*const img = images[Math.floor(Math.random() * images.length)];*/ /*Random*/
-       let img;
+      const img = orderedImages[currentIndex];
 
-        if (phase === "odd") {
-          const oddImages = images.filter((_, i) => i % 2 === 0);
-          img = oddImages[oddIndex];
-          oddIndex++;
+      currentIndex++;
 
-        if (oddIndex >= oddImages.length) {
-          phase = "even";
-          oddIndex = 0;
-        }
-
-      } else {
-        const evenImages = images.filter((_, i) => i % 2 === 1);
-
-        img = evenImages[evenIndex];
-        evenIndex++;
-
-        if (evenIndex >= evenImages.length) {
-          phase = "odd";
-          evenIndex = 0;
-        }
+      if (currentIndex >= orderedImages.length) {
+      currentIndex = 0;
       }
 
       currentImage = img;
