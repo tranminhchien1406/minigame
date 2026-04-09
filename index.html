@@ -185,9 +185,36 @@
 
     setRandomBackground();
 
-    // Hiện ảnh random
+    // Hiện ảnh
+    let oddIndex = 0;
+    let evenIndex = 0;
+    let phase = "odd"; // "odd" hoặc "even"
     function showImage() {
-      const img = images[Math.floor(Math.random() * images.length)];
+      /*const img = images[Math.floor(Math.random() * images.length)];*/ /*Random*/
+       let img;
+
+        if (phase === "odd") {
+          const oddImages = images.filter((_, i) => i % 2 === 0);
+          img = oddImages[oddIndex];
+          oddIndex++;
+
+        if (oddIndex >= oddImages.length) {
+          phase = "even";
+          oddIndex = 0;
+        }
+
+      } else {
+        const evenImages = images.filter((_, i) => i % 2 === 1);
+
+        img = evenImages[evenIndex];
+        evenIndex++;
+
+        if (evenIndex >= evenImages.length) {
+          phase = "odd";
+          evenIndex = 0;
+        }
+      }
+
       currentImage = img;
 
       document.getElementById("popupImg").src = img;
