@@ -144,7 +144,7 @@
       margin-bottom: 10px;
     }
     .rule-box {
-      margin-top: 15px;
+      /*margin-top: 15px;
       padding: 15px;
       width: 85%;
       max-width: 400px;
@@ -152,9 +152,59 @@
       background: rgba(0, 0, 0, 0.5);
       border-radius: 15px;
 
-      backdrop-filter: blur(5px);
+      backdrop-filter: blur(5px);*/
+
+      position: relative;
+      margin-top: 15px;
+      padding: 15px;
+      width: 85%;
+      max-width: 400px;
+  
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 15px;
+
+      color: white;
+      overflow: hidden;
     }
 
+    /*Viền Rule box*/
+    .rule-box::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: 15px;
+
+      background: linear-gradient(
+        45deg,
+        red,
+        orange,
+        yellow,
+        green,
+        cyan,
+        blue,
+        violet,
+        red
+      );
+
+      background-size: 400%;
+      animation: ledRun 6s linear infinite;
+
+      z-index: -1;
+    }
+    @keyframes ledRun {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 400% 50%; }
+    }
+
+    .rule-box::after {
+      content: "";
+      position: absolute;
+      inset: 2px;
+      border-radius: 13px;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: -1;
+    }
+    
     .rule-title {
       font-size: clamp(18px, 4vw, 24px);
       font-weight: bold;
