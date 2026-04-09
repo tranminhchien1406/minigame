@@ -103,7 +103,14 @@
       background: green;
       color: white;
     }
-
+    .hint-text {
+      color: #ffeb3b;
+      text-shadow: 0 0 10px rgba(0,0,0,0.7);
+      font-size: clamp(18px, 4vw, 28px);
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
   </style>
 </head>
 
@@ -122,6 +129,7 @@
 
   <!-- Popup -->
   <div class="popup" id="popup">
+    <div class="hint-text">Đây là gợi ý của bạn</div>
     <img id="popupImg">
     <div>
       <button class="download-btn" onclick="downloadImage()">Lưu ảnh</button>
