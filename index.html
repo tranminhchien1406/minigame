@@ -168,15 +168,15 @@
       "assets/bg3.jpg"
     ];
     
-    // Danh sách ảnh game lấy theo chẵn, lẻ
+    // Danh sách ảnh game
     const images = [];
     
     const totalImages = 10;
     for (let i = 1; i <= totalImages; i++) {
       images.push(`images/img${i}.jpg`);
     }
-    
-    const oddImages = images.filter((_, i) => i % 2 === 0); //Tách lẻ
+    // Chẳn lẽ
+    /*const oddImages = images.filter((_, i) => i % 2 === 0); //Tách lẻ
     const evenImages = images.filter((_, i) => i % 2 === 1); //Tách chẵn 
 
     const orderedImages = [...oddImages, ...evenImages]; //Gộp lại theo luật
@@ -186,7 +186,7 @@
     console.log("ORDER:", orderedImages);
     
     let currentIndex = 0;
-    let currentImage = "";
+    let currentImage = "";*/
 
     // Random background khi load
     function setRandomBackground() {
@@ -198,13 +198,13 @@
 
     // Hiện ảnh
     function showImage() {
-      /*const img = images[Math.floor(Math.random() * images.length)];*/ /*Random*/
-      const img = orderedImages[currentIndex];
+      const img = images[Math.floor(Math.random() * images.length)]; /*Random*/
+      /*const img = orderedImages[currentIndex];
       currentIndex++;
 
       if (currentIndex >= orderedImages.length) {
       currentIndex = 0;
-      }
+      }*/
 
       currentImage = img;
 
