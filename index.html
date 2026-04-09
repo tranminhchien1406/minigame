@@ -167,18 +167,11 @@
       "assets/bg2.jpg",
       "assets/bg3.jpg"
     ];
-
-    // Kiểm tra lỗi ảnh
-    orderedImages.forEach(img => {
-      const test = new Image();
-      test.src = img;
-      test.onerror = () => console.log("LỖI ẢNH:", img);
-    });
     
     // Danh sách ảnh game lấy theo chẵn, lẻ
     const images = [];
     
-    for (let i = 1; i <= 20; i++) {
+    for (let i = 1; i <= 10; i++) {
     images.push(`images/img${i}.jpg`);
     }
     
