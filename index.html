@@ -74,24 +74,55 @@
       position: fixed;
       inset: 0;
       background: rgba(0,0,0,0.8);
-      display: none;
+      display: flex;
+      
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      z-index: 10;
+      
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease;
+      
+      /*z-index: 10;*/
     }
-
+    
+    /* Khi bật popup */
+  .popup.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    
     .popup img {
       max-width: 90%;
       max-height: 70%;
+
+      transform: scale(0.6);
+      opacity: 0;
+      transition: all 0.4s ease;
+    }
+
+    .popup.show img {
+      transform: scale(1);
+      opacity: 1;
     }
 
     .popup button {
       margin-top: 15px;
       padding: 10px 20px;
-      font-size: 16px;
+
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      
+     /* font-size: 16px;
       border: none;
-      cursor: pointer;
+      cursor: pointer;*/
+    }
+    
+    .popup.show button {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .close-btn {
@@ -105,6 +136,8 @@
     }
 
   </style>
+  
+  
 </head>
 
 <body>
@@ -159,12 +192,36 @@
       const img = images[Math.floor(Math.random() * images.length)];
       currentImage = img;
 
-      document.getElementById("popupImg").src = img;
-      document.getElementById("popup").style.display = "flex";
+      const popup = document.getElementById("popup");
+      const popupImg = document.getElementById("popupImg");
+
+      popupImg.src = img;
+      
+    // Hiện popup (chưa animation)
+      popup.style.display = "flex";
+
+      // Delay nhỏ để kích hoạt animation
+      setTimeout(() => {
+        popup.classList.add("show");
+      }, 10);
+      
+      /*document.getElementById("popupImg").src = img;
+      document.getElementById("popup").style.display = "flex";*/
     }
 
     function closePopup() {
-      document.getElementById("popup").style.display = "none";
+      const popup = document.getElementById("popup");
+
+      // Tắt animation trước
+      popup.classList.remove("show");
+
+      // Sau 0.3s (đúng thời gian CSS)
+      setTimeout(() => {
+      popup.style.display = "none";
+    }, 300);
+}
+      
+      /*document.getElementById("popup").style.display = "none";*/
     }
 
     function downloadImage() {
