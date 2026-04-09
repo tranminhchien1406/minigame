@@ -172,7 +172,12 @@
     const images = [];
     
     for (let i = 1; i <= 10; i++) {
-    images.push(`images/img${i}.jpg`);
+    const img = new Image();
+    const path = `images/img${i}.jpg`;
+    //images.push(`images/img${i}.jpg`);
+
+    img.src = patch;
+    img.onload = () => images.push(path);
     }
     
     const oddImages = images.filter((_, i) => i % 2 === 0); //Tách lẻ
