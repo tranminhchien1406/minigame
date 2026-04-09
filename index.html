@@ -179,7 +179,11 @@
     const evenImages = images.filter((_, i) => i % 2 === 1); //Tách chẵn 
 
     const orderedImages = [...oddImages, ...evenImages]; //Gộp lại theo luật
-
+    
+    console.log("ODD:", oddImages);
+    console.log("EVEN:", evenImages);
+    console.log("ORDER:", orderedImages);
+    
     let currentIndex = 0;
     /*let currentImage = "";*/
 
@@ -195,14 +199,13 @@
     function showImage() {
       /*const img = images[Math.floor(Math.random() * images.length)];*/ /*Random*/
       const img = orderedImages[currentIndex];
-
       currentIndex++;
 
       if (currentIndex >= orderedImages.length) {
       currentIndex = 0;
       }
 
-      currentImage = img;
+      /*currentImage = img;*/
 
       document.getElementById("popupImg").src = img;
       document.getElementById("popup").style.display = "flex";
