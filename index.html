@@ -183,10 +183,10 @@
     
     console.log("ODD:", oddImages);
     console.log("EVEN:", evenImages);
-    console.log("ORDER:", orderedImages);
-    
-    let currentIndex = 0;*/
-    
+    console.log("ORDER:", orderedImages);*/
+
+    let shuffledImages = shuffleArray(images);
+    let currentIndex = 0;
     let currentImage = "";
 
     // Random background khi load
@@ -197,9 +197,18 @@
 
     setRandomBackground();
 
+    // Shuffle random
+    function shuffleArray(arr) {
+      const newArr = [...arr];
+      for (let i = newArr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
+      }
+  return newArr;
+}
     // Hiện ảnh
     function showImage() {
-      const img = images[Math.floor(Math.random() * images.length)]; /*Random*/
+      //const img = images[Math.floor(Math.random() * images.length)]; /*Random*/
       /*const img = orderedImages[currentIndex];
       currentIndex++;
 
@@ -207,6 +216,17 @@
       currentIndex = 0;
       }*/
 
+      //Shuffle
+      const img = shuffledImages[currentIndex];
+
+      currentIndex++;
+
+      // Hết vòng → shuffle lại
+      if (currentIndex >= shuffledImages.length) {
+      shuffledImages = shuffleArray(images);
+      currentIndex = 0;
+      }
+      
       currentImage = img;
 
       document.getElementById("popupImg").src = img;
