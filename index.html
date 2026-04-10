@@ -232,7 +232,23 @@
       position: relative;
       display: inline-block;
       border-radius: 15px;
-      overflow: hidden;
+
+      padding: 3px; /* tạo viền */
+      background: linear-gardient(
+        45deg,
+        red,
+        orange,
+        yellow,
+        green,
+        cyan,
+        blue,
+        violet,
+        red
+      ); /* nền fallback */
+      background-size: 400%;
+      animation: ledBorder 4s linear infinite;
+      
+      /*overflow: hidden;*/
     }
     .img-wrapper::before {
       content: "";
@@ -263,8 +279,8 @@
     }
     .img-wrapper img {
       display: block;
-      max-width: 90%;
-      max-height: 70%;
+      width: 100%;      /* FULL khung */
+      height: auto;
       border-radius: 12px;
     }
   </style>
