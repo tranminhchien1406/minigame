@@ -226,6 +226,47 @@
       line-height: 1.5;
       padding-left: 18px;
     }
+
+    /*Khung RGB*/
+    .img-wrapper {
+      position: relative;
+      display: inline-block;
+      border-radius: 15px;
+      overflow: hidden;
+    }
+    .img-wrapper::before {
+      content: "";
+      position: absolute;
+      inset: -3px;
+      border-radius: 18px;
+
+      background: linear-gradient(
+        45deg,
+        red,
+        orange,
+        yellow,
+        green,
+        cyan,
+        blue,
+        violet,
+        red
+        );
+
+    background-size: 400%;
+    animation: ledBorder 4s linear infinite;
+
+    z-index: -1;
+    }
+    @keyframes ledBorder {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 400% 50%; }
+    }
+    .img-wrapper img {
+      display: block;
+      max-width: 90%;
+      max-height: 70%;
+      border-radius: 12px;
+    }
   </style>
 </head>
 
@@ -236,6 +277,7 @@
 
   <!-- Title -->
   <div class="title">Mini game tìm vị trí</div>
+  
   <!-- Rule -->
   <div class="rule-box">
   <div class="rule-title">📜 Luật chơi</div>
@@ -247,6 +289,7 @@
     </ul>
   </div>
   <!-- Button -->
+  
   <div class="btn-container">
     <button class="circle-btn" onclick="showImage()">HIỆN ẢNH</button>
   </div>
@@ -254,7 +297,9 @@
   <!-- Popup -->
   <div class="popup" id="popup">
     <div class="hint-text">Đây là gợi ý của bạn</div>
-    <img id="popupImg">
+    <div class="img-wrapper">
+      <img id="popupImg">
+    </div>
     <div>
       <button class="download-btn" onclick="downloadImage()">Lưu ảnh</button>
       <button class="close-btn" onclick="closePopup()">Đóng</button>
