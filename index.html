@@ -236,16 +236,16 @@
       padding: 3px; /* tạo viền */
       background: black; /* nền fallback */
       
-      /*overflow: hidden;*/
+      overflow: hidden;
     }
     .img-wrapper {
       position: relative;
       display: inline-block;
 
-      max-width: 90vw;   /* giới hạn theo màn hình */
-      max-height: 70vh;  /* giới hạn chiều cao */
+      width: fit-content;   /* giới hạn theo màn hình */
+      height: fit-;  /* giới hạn chiều cao */
       
-      border-radius: px;
+      border-radius:  px;
       padding 4px;
       background: linear-gradient(
         45deg,
@@ -262,16 +262,14 @@
     background-size: 400%;
     animation: ledBorder 4s linear infinite;
     }
-    .img-wrapper {
-      overflow: hidden;
-    }
+
     @keyframes ledBorder {
       0% { background-position: 0% 50%; }
       100% { background-position: 400% 50%; }
     }
     .img-wrapper img {
       display: block;
-      max-width: 100%;  
+      max-width: 90vw;  
       max-heigh: 70vh;
 
       width: auto;
