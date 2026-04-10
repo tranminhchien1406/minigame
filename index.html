@@ -15,8 +15,12 @@
 
     body {
       height: 100vh;
+
+      background-image: url("assets/bg1.jpg"); /* 👉 đổi tên ảnh của bạn */
       background-size: cover;
       background-position: center;
+      background-repeat: no-repeat;
+
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -308,12 +312,6 @@
   </div>
 
   <script>
-    // Danh sách background
-    const backgrounds = [
-      "assets/bg1.jpg",
-      "assets/bg2.jpg",
-      "assets/bg3.jpg"
-    ];
     
     // Danh sách ảnh game
     const images = [];
@@ -326,14 +324,6 @@
     let shuffledImages = shuffleArray(images);
     let currentIndex = 0;
     let currentImage = "";
-
-    // Random background khi load
-    function setRandomBackground() {
-      const bg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
-      document.body.style.backgroundImage = `url(${bg})`;
-    }
-
-    setRandomBackground();
 
     // Shuffle random
     function shuffleArray(arr) {
