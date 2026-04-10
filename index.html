@@ -236,8 +236,7 @@
       padding: 3px; /* tạo viền */
       background: black; /* nền fallback */
       
-      line-height: 0;
-      overflow: hidden;
+      
     }
     .img-wrapper {
       position: relative;
@@ -245,8 +244,9 @@
 
       width: fit-content;   /* giới hạn theo màn hình */
       height: fit-content;  /* giới hạn chiều cao */
-      
-      border-radius:  px;
+
+      line-height: 0;
+      border-radius: 15 px;
       padding 4px;
       background: linear-gradient(
         45deg,
@@ -259,9 +259,10 @@
         violet,
         red
         );
-
+      
     background-size: 400%;
     animation: ledBorder 4s linear infinite;
+    overflow: hidden;
     }
 
     @keyframes ledBorder {
