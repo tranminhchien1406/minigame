@@ -234,28 +234,16 @@
       border-radius: 15px;
 
       padding: 3px; /* tạo viền */
-      background: linear-gardient(
-        45deg,
-        red,
-        orange,
-        yellow,
-        green,
-        cyan,
-        blue,
-        violet,
-        red
-      ); /* nền fallback */
-      background-size: 400%;
-      animation: ledBorder 4s linear infinite;
+      background: black; /* nền fallback */
       
       /*overflow: hidden;*/
     }
-    .img-wrapper::before {
-      content: "";
-      position: absolute;
-      inset: -3px;
-      border-radius: 18px;
+    .img-wrapper {
+      position: relative;
+      display: inline-block;
+      border-radius: px;
 
+      padding 3px;
       background: linear-gradient(
         45deg,
         red,
@@ -270,8 +258,6 @@
 
     background-size: 400%;
     animation: ledBorder 4s linear infinite;
-
-    z-index: -1;
     }
     @keyframes ledBorder {
       0% { background-position: 0% 50%; }
